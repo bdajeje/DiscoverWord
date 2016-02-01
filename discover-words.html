@@ -1,0 +1,48 @@
+<head>
+  <title>discover-words</title>
+</head>
+
+<body>
+  {{> loginButtons}}
+
+  {{#if currentUser}}
+    <ul>
+      <li>Running games: {{nbrRuningGames}}</li>
+    </ul>
+
+    <h1>Join a game!</h1>
+
+    {{> join_game}}
+  {{else}}
+    <div>Please login</div>
+  {{/if}}
+
+  <table>
+    <thead>
+      <th>Id</th>
+      <th>Player 1</th>
+      <th>Player 2</th>
+      <th>Created at</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      {{#each games}}
+        {{> game}}
+      {{/each}}
+    </tbody>
+  </table>
+</body>
+
+<template name="join_game">
+  <button class="join-game">Join</button>
+</template>
+
+<template name="game">
+  <tr>
+    <td>{{_id}}</td>
+    <td>{{player1}}</td>
+    <td>{{player2}}</td>
+    <td>{{createdAt}}</td>
+    <td><button class="delete-game">delete</button></td>
+  </tr>
+</template>
